@@ -32,5 +32,12 @@ $users = [
 		'role_id'=> 2
 	]
 ];
+foreach ($users as $value) {
+	extract($value);
+	$sqlQuery = "insert into users (name, email, password, role_id)
+			values ('$name', '$email', '$password', $role_id)";
+	// executeQuery($sqlQuery);
+}
+
 
  ?>
