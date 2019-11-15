@@ -3,7 +3,9 @@ require_once './commons/db.php';
 //https://github.com/fzaninotto/Faker
 require_once './libs/Faker/autoload.php';
 $faker = Faker\Factory::create();
-// $name = $faker->name('female');
+var_dump($faker->imageUrl($width = 640, $height = 480));
+var_dump($faker->image('public/images', 640, 480, 'cats'));
+die;
 // $companyName = $faker->company;
 // echo $name. "-" . $companyName;
 // die;
@@ -49,12 +51,21 @@ foreach ($users as $value) {
 
 for ($i=0; $i < 10; $i++) { 
 	$name = $faker->name;
-	$desc = $faker->realText;
+	$desc = $faker->realText($maxNbChars = 200, $indexSize = 2);
+	//biến đổi dữ liệu / chuẩn hóa dữ liệu cho chức năng
+	$desc = str_replace("'","\'", $desc);
 	$showMenu = rand(0, 1);
-
-	// thực hiện insert dữ liệu cho bảng categories
+	$sqlQuery = "insert into categories
+					(name, description, show_menu)
+				values
+					('$name', '$desc', $showMenu)";
+	// echo "<pre>";
+	// var_dump($sqlQuery);
+	// executeQuery($sqlQuery);
 
 }
+
+// insert dữ liệu mẫu cho bảng products (100 bản ghi)
 
 
  ?>
