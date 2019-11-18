@@ -4,9 +4,6 @@
     require_once './commons/helpers.php';
     $sqlQuery = "select * from products order by id desc limit 12";
     $products = executeQuery($sqlQuery, true);
-
-    $sqlGetMenus = "select * from categories where show_menu = 1";
-    $menus = executeQuery($sqlGetMenus, true);
 ?>
 
 <!DOCTYPE html>

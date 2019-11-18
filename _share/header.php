@@ -1,3 +1,8 @@
+<?php 
+    $sqlGetMenus = "select * from categories where show_menu = 1";
+    $menus = executeQuery($sqlGetMenus, true);
+ ?>
+
 <!--header start-->
 <header class="l-header">
 
