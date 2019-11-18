@@ -1,5 +1,9 @@
 <?php
     require_once './commons/constants.php';
+    require_once './commons/db.php';
+    require_once './commons/helpers.php';
+    $sqlQuery = "select * from products order by id desc limit 12";
+    $products = executeQuery($sqlQuery, true);
 ?>
 
 <!DOCTYPE html>
@@ -1096,275 +1100,48 @@
                             </div>
                             <!--product option-->
                             <div class="row">
-                                <div class="col-md-3">
-                                    <!--product list-->
-                                    <div class="product-list">
-                                        <div class="product-img">
-                                            <a href="#">
-                                                <img src="assets/img/product/1.jpg" alt="" />
-                                            </a>
-                                            <a href="#">
-                                                <img src="assets/img/product/1-alt.jpg" alt="" />
-                                            </a>
-                                            <div class="sale-label">
-                                                Sale
+                                <?php foreach ($products as $pro): ?>
+                                    <div class="col-md-3">
+                                        <!--product list-->
+                                        <div class="product-list">
+                                            <div class="product-img">
+                                                <a href="#">
+                                                    <img src="<?php echo $pro['feature_image'] ?>" alt="" />
+                                                </a>
+                                                <a href="#">
+                                                    <img src="<?php echo $pro['feature_image'] ?>" alt="" />
+                                                </a>
+                                                <div class="sale-label">
+                                                    Sale
+                                                </div>
+                                            </div>
+                                            <div class="product-title">
+                                                <h5><a href="#"><?php echo $pro['name'] ?></a></h5>
+                                            </div>
+                                            <div class="product-price">
+                                                <del><?php echo number_format($pro['price'], 0, '', ','); ?>đ</del> <?php echo number_format($pro['sale_price'], 0, '', ','); ?>đ
+                                            </div>
+                                            <div class="product-rating">
+                                                <?php 
+                                                    for($i = 1; $i <= 5; $i++){
+                                                        if($pro['rating'] >= $i){
+                                                            $starClass = "fa fa-star";
+                                                        }else{
+                                                            $starClass = "fa fa-star-o";
+                                                        }
+                                                        ?>
+                                                        <i class="<?php echo $starClass ?>"></i>
+                                                        <?php
+                                                    }
+                                                  ?>
+                                            </div>
+                                            <div class="product-btn">
+                                                <a href="#" class="btn btn-extra-small btn-dark-border  "><i class="fa fa-shopping-cart"></i> Add to cart</a>
                                             </div>
                                         </div>
-                                        <div class="product-title">
-                                            <h5><a href="#">CROPPED SKINNY ISA JEANS</a></h5>
-                                        </div>
-                                        <div class="product-price">
-                                            <del>$79.00</del> $59.99
-                                        </div>
-                                        <div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <div class="product-btn">
-                                            <a href="#" class="btn btn-extra-small btn-dark-border  "><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        </div>
+                                        <!--product list-->
                                     </div>
-                                    <!--product list-->
-                                </div>
-                                <div class="col-md-3">
-                                    <!--product list-->
-                                    <div class="product-list">
-                                        <div class="product-img">
-                                            <a href="#">
-                                                <img src="assets/img/product/2.jpg" alt="" />
-                                            </a>
-                                            <a href="#">
-                                                <img src="assets/img/product/2-alt.jpg" alt="" />
-                                            </a>
-                                        </div>
-                                        <div class="product-title">
-                                            <h5><a href="#">full sleeve cotton shirt</a></h5>
-                                        </div>
-                                        <div class="product-price">
-                                            $49.99
-                                        </div>
-                                        <div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <div class="product-btn">
-                                            <a href="#" class="btn btn-extra-small btn-dark-border  "><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        </div>
-                                    </div>
-                                    <!--product list-->
-                                </div>
-                                <div class="col-md-3">
-                                    <!--product list-->
-                                    <div class="product-list">
-                                        <div class="product-img">
-                                            <a href="#">
-                                                <img src="assets/img/product/3.jpg" alt="" />
-                                            </a>
-                                            <a href="#">
-                                                <img src="assets/img/product/3-alt.jpg" alt="" />
-                                            </a>
-                                            <div class="sale-label">
-                                                Sale
-                                            </div>
-                                        </div>
-                                        <div class="product-title">
-                                            <h5><a href="#">OPENWORK TRIMS DRESS</a></h5>
-                                        </div>
-                                        <div class="product-price">
-                                            <del>$279.00</del> $179.99
-                                        </div>
-                                        <div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
-                                        </div>
-                                        <div class="product-btn">
-                                            <a href="#" class="btn btn-extra-small btn-dark-border  "><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        </div>
-                                    </div>
-                                    <!--product list-->
-                                </div>
-                                <div class="col-md-3">
-                                    <!--product list-->
-                                    <div class="product-list">
-                                        <div class="product-img">
-                                            <a href="#">
-                                                <img src="assets/img/product/4.jpg" alt="" />
-                                            </a>
-                                            <a href="#">
-                                                <img src="assets/img/product/4-alt.jpg" alt="" />
-                                            </a>
-                                        </div>
-                                        <div class="product-title">
-                                            <h5><a href="#">full sleeve cotton t-shirt</a> </h5>
-                                        </div>
-                                        <div class="product-price">
-                                            $39.99
-                                        </div>
-                                        <div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
-                                        </div>
-                                        <div class="product-btn">
-                                            <a href="#" class="btn btn-extra-small btn-dark-border  "><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        </div>
-                                    </div>
-                                    <!--product list-->
-                                </div>
-                                <div class="col-md-3">
-                                    <!--product list-->
-                                    <div class="product-list">
-                                        <div class="product-img">
-                                            <a href="#">
-                                                <img src="assets/img/product/5.jpg" alt="" />
-                                            </a>
-                                            <a href="#">
-                                                <img src="assets/img/product/5-alt.jpg" alt="" />
-                                            </a>
-                                        </div>
-                                        <div class="product-title">
-                                            <h5><a href="#">SHOULDER DETAIL DRESS</a></h5>
-                                        </div>
-                                        <div class="product-price">
-                                            $59.99
-                                        </div>
-                                        <div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <div class="product-btn">
-                                            <a href="#" class="btn btn-extra-small btn-dark-border  "><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        </div>
-                                    </div>
-                                    <!--product list-->
-                                </div>
-                                <div class="col-md-3">
-                                    <!--product list-->
-                                    <div class="product-list">
-                                        <div class="product-img">
-                                            <a href="#">
-                                                <img src="assets/img/product/6.jpg" alt="" />
-                                            </a>
-                                            <a href="#">
-                                                <img src="assets/img/product/6-alt.jpg" alt="" />
-                                            </a>
-                                        </div>
-                                        <div class="product-title">
-                                            <h5><a href="#">SLEEVE COTTON SWEAT SHIRT</a></h5>
-                                        </div>
-                                        <div class="product-price">
-                                            $69.99
-                                        </div>
-                                        <div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
-                                        </div>
-                                        <div class="product-btn">
-                                            <a href="#" class="btn btn-extra-small btn-dark-border  "><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        </div>
-                                    </div>
-                                    <!--product list-->
-                                </div>
-                                <div class="col-md-3">
-                                    <!--product list-->
-                                    <div class="product-list">
-                                        <div class="product-img">
-                                            <a href="#">
-                                                <img src="assets/img/product/7.jpg" alt="" />
-                                            </a>
-                                            <a href="#">
-                                                <img src="assets/img/product/7-alt.jpg" alt="" />
-                                            </a>
-                                        </div>
-                                        <div class="product-title">
-                                            <h5><a href="#">CROPPED SKINNY ISA JEANS</a></h5>
-                                        </div>
-                                        <div class="product-price">
-                                            $59.99
-                                        </div>
-                                        <div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <div class="product-btn">
-                                            <a href="#" class="btn btn-extra-small btn-dark-border  "><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        </div>
-                                    </div>
-                                    <!--product list-->
-                                </div>
-                                <div class="col-md-3">
-                                    <!--product list-->
-                                    <div class="product-list">
-                                        <div class="product-img">
-                                            <a href="#">
-                                                <img src="assets/img/product/8.jpg" alt="" />
-                                            </a>
-                                            <a href="#">
-                                                <img src="assets/img/product/8-alt.jpg" alt="" />
-                                            </a>
-                                            <div class="sale-label">
-                                                Sale
-                                            </div>
-                                        </div>
-                                        <div class="product-title">
-                                            <h5><a href="#">OPENWORK TRIMS DRESS</a></h5>
-                                        </div>
-                                        <div class="product-price">
-                                            <del>$279.00</del> $179.99
-                                        </div>
-                                        <div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
-                                        </div>
-                                        <div class="product-btn">
-                                            <a href="#" class="btn btn-extra-small btn-dark-border  "><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        </div>
-                                    </div>
-                                    <!--product list-->
-                                </div>
-
-                                <div class="text-center col-md-12">
-                                    <ul class="pagination custom-pagination">
-                                        <li><a href="#">Prev</a>
-                                        </li>
-                                        <li class="active"><a href="#">1</a>
-                                        </li>
-                                        <li><a href="#">2</a>
-                                        </li>
-                                        <li><a href="#">3</a>
-                                        </li>
-                                        <li><a href="#">4</a>
-                                        </li>
-                                        <li><a href="#">5</a>
-                                        </li>
-                                        <li><a href="#">Next</a>
-                                        </li>
-                                    </ul>
-                                </div>
-
+                                <?php endforeach ?>
                             </div>
                         </div>
                     </div>
