@@ -156,61 +156,14 @@
                             <section class="normal-tabs">
                                 <ul class="nav nav-tabs">
                                     <li class="active">
-                                        <a data-toggle="tab" href="#tab-one">More Info</a>
-                                    </li>
-                                    <li class="">
-                                        <a data-toggle="tab" href="#tab-two">Specification</a>
-                                    </li>
-                                    <li class="">
                                         <a data-toggle="tab" href="#tab-three">Review (2)</a>
                                     </li>
 
                                 </ul>
                                 <div class="panel-body">
                                     <div class="tab-content">
-                                        <div id="tab-one" class="tab-pane active">
-                                            <h4 class="text-uppercase">Product Description</h4>
-                                            Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut scelerisque mattis, leo quam aliquet diam, congue laoreet elit metus eget diam. Proin ac metus diam. In quis scelerisque velit. Proin pellentesque neque ut scelerisque dapibus. Praesent
-                                            elementum feugiat dignissim. Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut scelerisque mattis, leo quam aliquet diam, congue laoreet elit metus eget diam. Proin ac metus diam. In quis
-                                            scelerisque velit. Proin pellentesque neque ut scelerisque dapibus. Praesent elementum feugiat dignissim. Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut scelerisque mattis, leo quam aliquet
-                                            diam, congue laoreet elit metus eget diam. Proin ac metus diam.
-                                        </div>
-                                        <div id="tab-two" class="tab-pane">
-                                            <table class="table table-striped table-bordered">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Size</td>
-                                                        <td>Small, Medium, Large &amp; Extra Large</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Color</td>
-                                                        <td>Read, Blue, Green &amp; Black</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Chest</td>
-                                                        <td>38 inches</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Waist</td>
-                                                        <td>20 cm</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Length</td>
-                                                        <td>35 cm</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Fabric</td>
-                                                        <td>Cotton, Silk &amp; Synthetic</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Warranty</td>
-                                                        <td>6 Months</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-
-                                        </div>
-                                        <div id="tab-three" class="tab-pane">
+                                        
+                                        <div id="tab-three" class="tab-pane active">
                                             <ul class="media-list comments-list clearlist">
 
                                                 <!-- comment item start-->
@@ -274,23 +227,16 @@
                                                 <h4 class="text-uppercase">ADD REVIEW</h4>
                                             </div>
 
-                                            <form method="post" action="#" id="form" role="form" class="blog-comments">
-
+                                            <form method="post" action="<?php echo BASE_URL . "add-comment.php?id=". $product['id'] ?>" id="form" role="form" class="blog-comments">
                                                 <div class="row">
 
                                                     <div class="col-md-6 form-group">
                                                         <!-- Name -->
-                                                        <input type="text" name="name" id="name" class=" form-control" placeholder="Name *" maxlength="100" required="">
+                                                        <input type="text" name="title" id="name" class=" form-control" placeholder="Title *" maxlength="100" required="">
                                                     </div>
-
-                                                    <div class="col-md-6 form-group">
-                                                        <!-- Email -->
-                                                        <input type="email" name="email" id="email" class=" form-control" placeholder="Email *" maxlength="100" required="">
-                                                    </div>
-
 
                                                     <div class="form-group col-md-12">
-                                                        <select class="form-control">
+                                                        <select class="form-control" name="rating">
                                                             <option value="">Rating -- Select One --</option>
                                                             <option value="1">1</option>
                                                             <option value="2">2</option>
@@ -302,7 +248,7 @@
 
                                                     <!-- Comment -->
                                                     <div class="form-group col-md-12">
-                                                        <textarea name="text" id="text" class=" form-control" rows="6" placeholder="Comment" maxlength="400"></textarea>
+                                                        <textarea id="text" class=" form-control" rows="6" placeholder="Comment" maxlength="400" name="content"></textarea>
                                                     </div>
 
                                                     <!-- Send Button -->
