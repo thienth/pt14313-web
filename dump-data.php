@@ -4,22 +4,41 @@ require_once './commons/db.php';
 require_once './libs/Faker/autoload.php';
 $faker = Faker\Factory::create();
 
-try{
-	$sqlQuery = "select * from products";
-	$products = executeQuery($sqlQuery, true);
-	
-	foreach ($products as $pro) {	
-		// $feature_image = str_replace("public", "", $pro['feature_image']);
-		// $feature_image = ltrim($pro['feature_image'], "/");
-		$proId = $pro['id'];
-		$sqlQuery = "update products 
-						set feature_image = '$feature_image'
-					where id = $proId";
-		executeQuery($sqlQuery);
+// thêm dữ liệu vào bảng product_galleries
+// lấy toàn bộ data trong bảng products
+$sqlQuery = "select * from products";
+$products = executeQuery($sqlQuery, true);
+// vòng lặp để thêm các ảnh vào bảng product_galleries
+foreach ($products as $item) {
+	$imgAmount = rand(2, 4);
+	for ($i=0; $i < $imgAmount; $i++) { 
+		$product_id = $item['id'];
+		$url = $faker->image('public/images', 640, 480, 'people');
+		$url = str_replace("public/", "", $url);
+		$sqlProGallery = "insert into product_galleries
+							(product_id, url)
+						values
+							('$product_id', '$url')";
+		executeQuery($sqlProGallery);
 	}
-}catch(Exception $ex){
-	var_dump($ex->getMessage());
 }
+
+// try{
+// 	$sqlQuery = "select * from products";
+// 	$products = executeQuery($sqlQuery, true);
+	
+// 	foreach ($products as $pro) {	
+// 		// $feature_image = str_replace("public", "", $pro['feature_image']);
+// 		// $feature_image = ltrim($pro['feature_image'], "/");
+// 		$proId = $pro['id'];
+// 		$sqlQuery = "update products 
+// 						set feature_image = '$feature_image'
+// 					where id = $proId";
+// 		// executeQuery($sqlQuery);
+// 	}
+// }catch(Exception $ex){
+// 	var_dump($ex->getMessage());
+// }
 
 // var_dump($faker->imageUrl($width = 640, $height = 480));
 // var_dump($faker->image('public/images', 640, 480, 'cats'));

@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base href="<?php echo BASE_URL; ?>">
+    <base href="<?php echo BASE_URL . "public/"; ?>">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta name="description" content="">
@@ -124,7 +124,9 @@
                                                 </div>
                                             </div>
                                             <div class="product-title">
-                                                <h5><a href="#"><?php echo $pro['name'] ?></a></h5>
+                                                <h5>
+                                                    <a href="<?php echo BASE_URL . "detail.php?id=" . $pro['id'] ?>"><?php echo $pro['name'] ?></a>
+                                                </h5>
                                             </div>
                                             <div class="product-price">
                                                 <del><?php echo number_format($pro['price'], 0, '', ','); ?>đ</del> <?php echo number_format($pro['sale_price'], 0, '', ','); ?>đ

@@ -1,6 +1,6 @@
 <?php 
 
-define('BASE_URL', 'http://localhost/pt14313-web/public/');
+define('BASE_URL', 'http://localhost/pt14313-web/');
 
 
  ?>
