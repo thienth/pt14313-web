@@ -1,9 +1,11 @@
 <?php
+    session_start();
     require_once './commons/constants.php';
     require_once './commons/db.php';
     require_once './commons/helpers.php';
     $sqlQuery = "select * from products order by id desc limit 12";
     $products = executeQuery($sqlQuery, true);
+    $user = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
 ?>
 
 <!DOCTYPE html>
@@ -61,7 +63,7 @@
         <!--page title start-->
         <section class="page-title">
             <div class="container">
-                <h4 class="text-uppercase">Shop - 4 Column</h4>
+                <h4 class="text-uppercase"><?php echo $user['name'] ?></h4>
                 <ol class="breadcrumb">
                     <li><a href="#">Home</a>
                     </li>
